@@ -8,14 +8,14 @@ on:
 
 jobs:
   run-powershell:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # You can also use windows-latest if you're on Windows
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
       - name: Run PowerShell Commands
-        shell: pwsh
+        shell: pwsh  # Uses PowerShell Core (pwsh)
         run: |
           Write-Host "Running PowerShell in GitHub Actions"
           Write-Host "Current Date and Time: $(Get-Date)"
