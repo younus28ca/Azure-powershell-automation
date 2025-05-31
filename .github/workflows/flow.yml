@@ -1,21 +1,22 @@
-name: Azure PowerShell CI
+name: Run PowerShell Script
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  run-powershell-script:
+  powershell-job:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install PowerShell
-        uses: PowerShell/PowerShell@v1.2.0
-
-      - name: Run script
+      - name: Run a PowerShell script
         shell: pwsh
-        run: ./CreateAzureVM.ps1
+        run: |
+          Write-Output "Current Date and Time:"
+          Get-Date
+          Write-Output "Listing files in the repo:"
+          Get-ChildItem
